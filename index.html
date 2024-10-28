@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <title>Ammu😘</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e4dcc8;
+            overflow: hidden; /* Prevent scroll due to floating hearts */
+        }
+
+        .card-wrapper {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            perspective: 1500px;
+            cursor: pointer;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: 400px;
+            display: flex;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        .card.open {
+            transform: rotateY(-180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .front {
+            background: url(page.jpg) no-repeat center / cover;
+            left: 270px;
+            width: 202%;
+            height: 98vh;
+            bottom: -73px;
+        }
+
+        .left, .middle, .right {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .left {
+            background-image: url('page.jpg');
+            transform: rotateY(-180deg) translateX(-100%);
+        }
+
+        .middle {
+            background-image: url('page.jpg');
+            transform: rotateY(180deg);
+        }
+
+        .right {
+            background-image: url('page.jpg');
+            transform: rotateY(-180deg) translateX(100%);
+        }
+
+        .common {
+            width: 138%;
+            right: 115%;
+            height: 109%;
+        }
+
+        p {
+            position: absolute;
+            top: 82px;
+            left: 86px;
+            width: 235px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .titlee {
+            font-size: 22px;
+            position: relative;    
+            margin-left: 3px;
+            margin-top: -8px;
+        }
+
+        .front-text {
+            font-size: 40px;
+            left: 186px;
+        }
+
+        
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 15px;
+        }
+
+        .heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: float 5s linear infinite;
+    bottom: -30px; /* Start from bottom */
+    opacity: 0;
+}
+.second-text{
+    margin-left: 100px;
+    margin-top: 239px;
+    font-size: 20px;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(-45deg); /* Float to top */
+        opacity: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div id="hearts-container"></div> <!-- Heart Container -->
+
+    <div class="card-wrapper" onclick="toggleCard()">
+        <div class="card">
+            <div class="card-face front">
+                <p class="front-text">Happy Birthday Ammu Bangaram❤️</p>
+                <p class="second-text">It's my baby girl's birthday 😘, What has Shyam written
+                    Tap to know more.....
+
+                </p>
+            </div>
+            <div class="card-face left common">
+                <p class="titlee"><u>Past</u></p>
+                <p>How wonderful our office days were the time when we eagerly waited to say hi, to see each other, and to talk to one another.
+                    The moment you held my hand and asked me not to leave was when I began imagining a life with you.
+                    Saturday dates felt like being kids again, spending time solely with each other and getting to know us better.
+                    Those late-night conversations, where we poured our hearts out, helped us truly understand one another.
+                    <b>I love you my Siri❤️</b></p>
+            </div>
+            <div class="card-face middle common">
+                <p class="titlee"><u>Present</u></p>
+                <p>This phase of our love life feels like a constant balancing act between love and life's demands, yet we always make time for each other.
+                    We know each other so well that we can predict what the other would choose in any situation.
+                    Time flies when we're together, and you’ve become such an essential part of my routine.
+                    I’ve grown so dependent on you that I feel incapable of doing anything without you.
+                    All I think about, all day long, is you—and us.<b>I love you my Ammu❤️</b></p>
+            </div>
+            <div class="card-face right common">
+                <p class="titlee"><u>Future</u></p>
+                <p>The thought of our future together is the only thing that keeps me moving forward.
+                    I am waiting for the day we come home together, enjoy movie nights, cuddle, and feed each other every day.
+                    Exploring the world, going on adventures, and watching each other turn into kids again is what I imagine when I think about our future travels.
+                    Spending time with our beautiful Isha and Abhi, playing happily, and watching you smile as you look at them—that's the life I dream of.
+                    This is all I ask for: to be us.
+                    <b>I love you my pellam❤️</b></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard() {
+            const card = document.querySelector('.card');
+            card.classList.toggle('open');
+        }
+
+        // Create and animate hearts
+        const container = document.getElementById('hearts-container');
+
+        function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+
+    // Randomize properties
+    const randomLeft = Math.random() * 100; // Random horizontal position
+    const randomSize = Math.random() * 0.6 + 0.4; // Size between 0.4x to 1x
+    const randomDuration = Math.random() * 4 + 4; // Faster animation (4-8s)
+
+    heart.style.left = `${randomLeft}%`;
+    heart.style.transform = `scale(${randomSize}) rotate(-45deg)`;
+    heart.style.animationDuration = `${randomDuration}s`;
+
+    container.appendChild(heart);
+
+    // Remove heart after animation ends
+    setTimeout(() => heart.remove(), randomDuration * 1000);
+}
+
+        // Generate hearts every second
+        setInterval(() => {
+    const heartsToGenerate = 3; // Number of hearts to generate at once
+    for (let i = 0; i < heartsToGenerate; i++) {
+        createHeart();
+    }
+}, 300);
+    </script>
+
+</body>
+</html>
